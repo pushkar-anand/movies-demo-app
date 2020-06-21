@@ -1,11 +1,10 @@
 package com.example.movies.data.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.movies.data.entity.Movie
+import com.example.movies.data.entity.MovieWithActors
+import com.example.movies.data.entity.MovieWithDescription
 
 @Dao
 interface MovieDao {
@@ -21,5 +20,13 @@ interface MovieDao {
 
     @Query("SELECT * FROM movies")
     fun getAllMovies(): LiveData<List<Movie>>
+
+    @Transaction
+    @Query("SELECT * FROM movies WHERE movie_id = :movieID")
+    fun getMovieWithDescription(movieID: Long): LiveData<MovieWithDescription>
+
+    @Transaction
+    @Query("SELECT * FROM movies WHERE movie_id = :movieID")
+    fun getMovieWithActors(movieID: Long): LiveData<MovieWithActors>
 
 }

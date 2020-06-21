@@ -4,13 +4,13 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "actors")
-data class Actor(
+@Entity(tableName = "users")
+data class User(
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "actor_id")
-    val actorID: Long,
+    @ColumnInfo(name = "user_id")
+    val userID: Long,
 
-    @ColumnInfo(name = "actor_name")
-    var actorName: String
+    @ColumnInfo(name = "user_name")
+    var name: String
 )

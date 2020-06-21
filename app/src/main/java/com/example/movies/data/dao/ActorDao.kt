@@ -1,11 +1,9 @@
 package com.example.movies.data.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.movies.data.entity.Actor
+import com.example.movies.data.entity.ActorWithMovies
 
 @Dao
 interface ActorDao {
@@ -21,4 +19,8 @@ interface ActorDao {
 
     @Query("SELECT * FROM actors")
     fun getAllActors(): LiveData<List<Actor>>
+
+    @Transaction
+    @Query("SELECT * FROM actors WHERE actor_id = :actorID")
+    fun getActorMovies(actorID: Long): LiveData<ActorWithMovies>
 }
