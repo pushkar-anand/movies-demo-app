@@ -3,6 +3,6 @@ package com.example.movies.ui.main
 import androidx.lifecycle.ViewModel
 import com.example.movies.data.DataRepository
 
-class MainViewModel(dataRepository: DataRepository): ViewModel() {
-
+class MainViewModel(dataRepository: DataRepository) : ViewModel() {
+    val movieWithActors = dataRepository.getMovieWithAllActors(1L)
 }

@@ -29,4 +29,6 @@ class DataRepository private constructor(context: Context) {
         }
     }
 
+    fun getMovieWithAllActors(movieID: Long) = movieDao.getMovieWithActors(movieID)
+
 }
